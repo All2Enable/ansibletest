@@ -1,0 +1,6 @@
+---
+# defaults/main.yml
+nginx_app_domain: "localhost"
+nginx_app_port: 80
+nginx_upstream: "http://localhost:3000"
+nginx_config_path: "/etc/nginx/conf.d/app.conf"

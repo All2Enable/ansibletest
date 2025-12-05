@@ -1,0 +1,8 @@
+---
+- hosts: web_servers
+  become: yes
+  roles:
+    - nginx_proxy
+  vars:
+    nginx_app_domain: "example.com"
+    nginx_upstream: "http://localhost:3000"

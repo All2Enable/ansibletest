@@ -1,0 +1,13 @@
+---
+# handlers/main.yml
+
+- name: Verify Nginx config
+  command: nginx -t
+  listen: "verify and restart nginx"
+  notify: Restart Nginx
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: reloaded
+    enabled: yes

@@ -1,0 +1,23 @@
+---
+# tasks/main.yml
+
+- name: Install Nginx
+  package:
+    name: nginx
+    state: present
+
+- name: Ensure Nginx service is started and enabled
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Deploy Nginx proxy config with backup
+  template:
+    src: app.conf.j2
+    dest: "{{ nginx_config_path }}"
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes 
+  notify: "verify and restart nginx"

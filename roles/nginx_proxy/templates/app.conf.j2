@@ -1,0 +1,13 @@
+# templates/app.conf.j2
+server {
+    listen {{ nginx_app_port }};
+    server_name {{ nginx_app_domain }};
+
+    location / {
+        proxy_pass {{ nginx_upstream }};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
